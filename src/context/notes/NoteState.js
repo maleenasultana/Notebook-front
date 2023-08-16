@@ -6,10 +6,11 @@ const NoteState =(props) =>{
     const notesInitial =[]
       const [notes, setNotes] = useState(notesInitial)
 
+      const URL = "http://localhost:5000/api/notes" || "https://notebook-backend-6phm.onrender.com/api/notes"
       // Get all Notes
   const getNotes = async () => {
     // API Call 
-    const response = await fetch(`http://localhost:5000/api/notes/fetchallnotes`, {
+    const response = await fetch(URL + `/fetchallnotes`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +25,7 @@ const NoteState =(props) =>{
   const addNote = async (title, description, tag) => {
     // TODO: API Call
     // API Call 
-    const response = await fetch(`http://localhost:5000/api/notes/addnote`, {
+    const response = await fetch(URL + `/addnote`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +40,7 @@ const NoteState =(props) =>{
   //delete a note
   const deleteNote = async (id) => {
     // API Call
-    const response = await fetch(`http://localhost:5000/api/notes/deletenote/${id}`, {
+    const response = await fetch(URL + `/deletenote/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -56,7 +57,7 @@ const NoteState =(props) =>{
   // Edit a Note
   const editNote = async (id, title, description, tag) => {
     // API Call 
-    const response = await fetch(`http://localhost:5000/api/notes/updatenote/${id}`, {
+    const response = await fetch(URL + `/updatenote/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
